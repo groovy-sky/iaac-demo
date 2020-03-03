@@ -74,20 +74,6 @@
       "location": "[resourceGroup().location]",
       "properties": {
         "securityRules": [
-          {
-            "name": "Allow_SSH",
-            "properties": {
-              "description": "Allow SSH",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "22",
-              "sourceAddressPrefix": "*",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 100,
-              "direction": "Inbound"
-            }
-          },
 		            {
             "name": "Allow_HTTP",
             "properties": {
@@ -99,20 +85,6 @@
               "destinationAddressPrefix": "*",
               "access": "Allow",
               "priority": 110,
-              "direction": "Inbound"
-            }
-          },
-		            {
-            "name": "Allow_HTTPS",
-            "properties": {
-              "description": "Allow HTTPS",
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "destinationPortRange": "443",
-              "sourceAddressPrefix": "*",
-              "destinationAddressPrefix": "*",
-              "access": "Allow",
-              "priority": 120,
               "direction": "Inbound"
             }
           }
