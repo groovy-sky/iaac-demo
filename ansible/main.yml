@@ -1,0 +1,3 @@
+---
+- import_playbook: ./az.yml
+- import_playbook: ./vm.yml

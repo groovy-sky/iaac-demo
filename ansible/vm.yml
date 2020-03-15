@@ -1,0 +1,18 @@
+---
+- name: Remote VM Part
+  hosts: azure
+  vars_files:
+  - 'variables.yml'
+  remote_user: '{{ ssh_account }}'
+  tasks:
+
+
+  - name: Copy using inline content
+    copy:
+      content: 'Ansible is awesome!'
+      dest: /var/www/html/index.nginx-debian.html
+
+  - name: restart nginx
+    service:
+      name: nginx
+      state: restarted
