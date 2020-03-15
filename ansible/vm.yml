@@ -3,14 +3,14 @@
   hosts: azure
   vars_files:
   - 'variables.yml'
-  remote_user: '{{ ssh_account }}'
+  become_method: sudo
+  become: true
   tasks:
 
-
-  - name: Copy using inline content
+  - name: modify default page
     copy:
       content: 'Ansible is awesome!'
-      dest: /var/www/html/index.nginx-debian.html
+      dest: '/var/www/html/index.nginx-debian.html'
 
   - name: restart nginx
     service:

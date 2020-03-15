@@ -35,6 +35,8 @@
     add_host:
       name: "{{ azure_vm_dns.name }}.{{ azure_vm_dns.location }}.cloudapp.azure.com"
       groups: azure
+      ansible_ssh_user: '{{ ssh_account }}'
+
 
   - name: getting current public IP
     raw: curl https://api.ipify.org
