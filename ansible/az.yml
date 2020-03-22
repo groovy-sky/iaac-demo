@@ -10,6 +10,14 @@
   - set_fact: 
       ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
+  - name: Create Azure Deploy
+    azure_rm_deployment:
+      resource_group: "{{ azure_group_name }}"
+      name: AnsibleDeployment
+      template_link: 'https://raw.githubusercontent.com/groovy-sky/iaac-demo/master/azure/azuredeploy.json'
+      parameters:
+        adminPassword: "{{ vm_tmp_pass }}"
+
   - name: Get facts for a resource group resources
     azure_rm_resourcegroup_info:
       name: "{{ azure_group_name }}"
@@ -37,8 +45,7 @@
       groups: azure
       ansible_ssh_user: '{{ ssh_account }}'
 
-
-  - name: getting current public IP
+  - name: Get current public IP
     raw: curl https://api.ipify.org
     register: ipify_response
   
