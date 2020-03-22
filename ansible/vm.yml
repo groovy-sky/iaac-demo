@@ -7,12 +7,15 @@
   become: true
   tasks:
 
-  - name: modify default page
+  - name: Wait for VM to become reachable
+    wait_for_connection:
+
+  - name: Modify default page
     copy:
       content: 'Ansible is awesome!'
       dest: '/var/www/html/index.nginx-debian.html'
 
-  - name: restart nginx
+  - name: Restart nginx
     service:
       name: nginx
       state: restarted
