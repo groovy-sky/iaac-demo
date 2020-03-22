@@ -10,10 +10,16 @@
   - set_fact: 
       ssh_key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
 
-  - name: Create Azure Deploy
+  - name: Get facts about deployment group
+    azure_rm_resourcegroup_info:
+      name: "{{ azure_group_name }}"
+    register: azure_group
+
+  - name: Start Deployment
     azure_rm_deployment:
       resource_group: "{{ azure_group_name }}"
       name: AnsibleDeployment
+      location: "{{ azure_group.resourcegroups[0].location }}"
       template_link: 'https://raw.githubusercontent.com/groovy-sky/iaac-demo/master/azure/azuredeploy.json'
       parameters:
         adminPassword: "{{ vm_tmp_pass }}"
