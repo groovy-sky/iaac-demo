@@ -5,6 +5,7 @@
   - 'variables.yml'
   become_method: sudo
   become: true
+  gather_facts: no
   tasks:
 
   - name: Wait for VM to become reachable
