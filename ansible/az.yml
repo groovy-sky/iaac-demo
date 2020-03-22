@@ -22,7 +22,7 @@
       resource_group: "{{ azure_group_name }}"
       name: AnsibleDeployment
       location: "{{ azure_group.resourcegroups[0].location }}"
-      template_link: 'https://raw.githubusercontent.com/groovy-sky/iaac-demo/master/azure/azuredeploy.json'
+      template: "{{ lookup('file', '../azure/azuredeploy.json') }}" 
       parameters:
         adminPassword: 
           value: "{{ vm_tmp_pass }}"
