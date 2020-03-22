@@ -1,2 +1,2 @@
 ssh_account: 'ans1bl3acc'
-vm_tmp_pass: "{{ lookup('password', '/dev/null length=15 chars=hexdigits') }}"
+vm_tmp_pass: "{{ lookup('password', '/dev/null length=15 chars=ascii_letters') }}"

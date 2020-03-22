@@ -22,7 +22,8 @@
       location: "{{ azure_group.resourcegroups[0].location }}"
       template_link: 'https://raw.githubusercontent.com/groovy-sky/iaac-demo/master/azure/azuredeploy.json'
       parameters:
-        adminPassword: "{{ vm_tmp_pass }}"
+        adminPassword: 
+          value: "{{ vm_tmp_pass }}"
 
   - name: Get facts for a resource group resources
     azure_rm_resourcegroup_info:
