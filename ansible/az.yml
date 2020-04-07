@@ -4,6 +4,10 @@
   vars_files:
   - 'variables.yml'
   tasks:
+  - name: Check that folder for SSH exists
+    stat:
+      path: ~/.ssh/
+
   - name: Generate SSH key
     openssh_keypair:
       path: ~/.ssh/id_rsa
