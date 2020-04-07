@@ -23,3 +23,6 @@ jobs:
 
     - name: Docker login
       run: docker login -u ${{ secrets.DockerHubUser }} -p ${{ secrets.DockerHubToken }}
+
+    - name: Docker build and push
+      run: docker build -f ${GITHUB_WORKSPACE}/docker/Dockerfile -t ${{ secrets.DockerHubUser }}/iac-demo:latest . && docker push ${{ secrets.DockerHubUser }}/iac-demo:latest
