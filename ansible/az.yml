@@ -5,8 +5,10 @@
   - 'variables.yml'
   tasks:
   - name: Check that folder for SSH exists
-    stat:
-      path: ~/.ssh/
+    file:
+      path: ~/.ssh
+      state: directory
+      mode: '0700'
 
   - name: Generate SSH key
     openssh_keypair:
