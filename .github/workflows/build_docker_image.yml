@@ -1,8 +1,6 @@
-# Action name
-name: build_docker_image
+name: Build Docker Image
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Controls when the action will run. Triggers the workflow on push request
 on:
   push:
     paths:
@@ -15,16 +13,22 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    # Login to Docker Hub
     - name: Docker login
       run: docker login -u ${{ secrets.DockerHubUser }} -p ${{ secrets.DockerHubToken }}
 
+    # Build and publish Docker image
     - name: Docker build and push
-      run: docker build -f ${GITHUB_WORKSPACE}/docker/Dockerfile -t ${{ secrets.DockerHubUser }}/iac-demo:latest . && docker push ${{ secrets.DockerHubUser }}/iac-demo:latest
+      run: docker build -f ${GITHUB_WORKSPACE}/docker/Dockerfile -t ${{ secrets.DockerHubUser }}/${IMAGE_NAME}:latest . && docker push ${{ secrets.DockerHubUser }}/${IMAGE_NAME}:latest
+      env:
+        IMAGE_NAME: iac-demo
