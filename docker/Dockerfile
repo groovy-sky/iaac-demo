@@ -10,7 +10,7 @@ RUN apt-get update \
  && pip install ansible[azure] \
  && pip install docker
 
-LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/local/bin/node"
+LABEL "com.azure.dev.pipelines.agent.handler.node.path"="/usr/bin/node"
 
 WORKDIR ${START_DIR}
 
