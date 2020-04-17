@@ -5,14 +5,14 @@ name: $(BuildDefinitionName)_[$(Date:yyyyMMdd)]
 trigger: none
 
 # The type of agent that the job will run on
-pool:
-  vmImage: 'ubuntu-18.04'
-
-# Container agent's Docker image name
-container: gr00vysky/iac-demo:latest
 
 jobs:
   - job: "First Job"
+    pool:
+      vmImage: 'ubuntu-18.04'
+
+    # Container agent's Docker image name
+    container: gr00vysky/iac-demo:latest
     # Steps represent a sequence of tasks that will be executed
     steps:
 
