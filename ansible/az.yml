@@ -96,6 +96,7 @@
     azure_rm_virtualmachine:
       resource_group: "{{ azure_group_name }}"
       name: "{{ azure_vm.name }}"
+    no_log: true
 
   - name: Reset VM password
     azure_rm_virtualmachineextension:
