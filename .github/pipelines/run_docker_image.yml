@@ -7,7 +7,7 @@ trigger: none
 # The type of agent that the job will run on
 
 jobs:
-  - job: "First Job"
+  - job: "First_Job"
     pool:
       vmImage: 'ubuntu-18.04'
 
