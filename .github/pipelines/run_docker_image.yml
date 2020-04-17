@@ -1,0 +1,19 @@
+name: $(BuildDefinitionName)_[$(Date:ddMMyyyy)]
+
+pool:
+  vmImage: 'ubuntu-18.04'
+
+trigger: none
+
+container: gr00vysky/iac-demo:latest
+
+steps:
+
+- bash: ansible-playbook /opt/automation/ansible/main.yml -e azure_group_name='demo-group'
+  displayName: 'ansible run'
+  env:
+    ANSIBLE_HOST_KEY_CHECKING: False
+    AZURE_CLIENT_ID: $(client_id)
+    AZURE_SECRET: $(secret)
+    AZURE_SUBSCRIPTION_ID: $(subscription_id)
+    AZURE_TENANT: $(tenant)
