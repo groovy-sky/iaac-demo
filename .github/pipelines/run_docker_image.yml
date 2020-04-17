@@ -9,7 +9,7 @@ container: gr00vysky/iac-demo:latest
 
 steps:
 
-- bash: ansible-playbook /opt/automation/ansible/main.yml -e "azure_group_name='demo-group' nginx_default_msg=$(Date:ddMMyyyy)"
+- bash: ansible-playbook /opt/automation/ansible/main.yml -e "azure_group_name='demo-group' nginx_default_msg=$(date)"
   displayName: 'ansible run'
   env:
     ANSIBLE_HOST_KEY_CHECKING: False
