@@ -15,6 +15,13 @@
     copy:
       content: 'Ansible is awesome!'
       dest: '/var/www/html/index.nginx-debian.html'
+    when: nginx_default_msg is undefined
+
+  - name: Modify default page
+    copy:
+      content: "{{ nginx_default_msg }}"
+      dest: '/var/www/html/index.nginx-debian.html'
+    when: nginx_default_msg is defined
 
   - name: Restart nginx
     service:
