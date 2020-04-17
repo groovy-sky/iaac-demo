@@ -12,7 +12,7 @@ pool:
 container: gr00vysky/iac-demo:latest
 
 jobs:
-  - job: 
+  - job: "First Job"
     # Steps represent a sequence of tasks that will be executed
     steps:
 
