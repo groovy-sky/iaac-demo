@@ -1,10 +1,12 @@
 name: $(BuildDefinitionName)_[$(Date:yyyyMMdd)]
 
 # Controls when the action will run. 
-# Trigger is set to 'none' the pipeline which means you need to start manually.
+# Trigger is set to 'none' the pipeline which means you need to start it manually.
 trigger: none
 
+# A pipeline is made up of one or more jobs
 jobs:
+  # This pipeline contains a single job
   - job: "Demo_Job"
 
     # The type of agent that the job will run on
@@ -18,7 +20,7 @@ jobs:
     steps:
 
     - bash: ansible-playbook /opt/automation/ansible/main.yml -e "azure_group_name='demo-group' nginx_default_msg=$(nginx_default_msg)"
-      displayName: 'run main.yml playbook'
+      displayName: 'Run main.yml Playbook'
       env:
         ANSIBLE_HOST_KEY_CHECKING: False
         AZURE_CLIENT_ID: $(client_id)
