@@ -4,20 +4,21 @@ name: $(BuildDefinitionName)_[$(Date:yyyyMMdd)]
 # Trigger is set to 'none' the pipeline which means you need to start manually.
 trigger: none
 
-# The type of agent that the job will run on
-
 jobs:
   - job: "First_Job"
+
+    # The type of agent that the job will run on
     pool:
       vmImage: 'ubuntu-18.04'
 
     # Container agent's Docker image name
     container: gr00vysky/iac-demo:latest
+
     # Steps represent a sequence of tasks that will be executed
     steps:
 
-    - bash: ansible-playbook /opt/automation/ansible/main.yml -e "azure_group_name='demo-group' nginx_default_msg=$(date +%Y-%m-%d_%H:%M:%S)"
-      displayName: 'run ansible playbook'
+    - bash: $(CommandToExecute)
+      displayName: 'run iac-demo container'
       env:
         ANSIBLE_HOST_KEY_CHECKING: False
         AZURE_CLIENT_ID: $(client_id)
