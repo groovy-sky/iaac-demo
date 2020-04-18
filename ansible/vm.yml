@@ -15,7 +15,7 @@
     copy:
       content: 'Ansible is awesome!'
       dest: '/var/www/html/index.nginx-debian.html'
-    when: nginx_default_msg is undefined
+    when: (nginx_default_msg is undefined) or (nginx_default_msg | length == 0)
 
   - name: Modify default page
     copy:

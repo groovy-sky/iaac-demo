@@ -5,7 +5,7 @@ name: $(BuildDefinitionName)_[$(Date:yyyyMMdd)]
 trigger: none
 
 jobs:
-  - job: "First_Job"
+  - job: "Demo_Job"
 
     # The type of agent that the job will run on
     pool:
@@ -17,8 +17,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed
     steps:
 
-    - bash: $(CommandToExecute)
-      displayName: 'run iac-demo container'
+    - bash: ansible-playbook /opt/automation/ansible/main.yml -e "azure_group_name='demo-group' nginx_default_msg=$(nginx_default_msg)"
+      displayName: 'run main.yml playbook'
       env:
         ANSIBLE_HOST_KEY_CHECKING: False
         AZURE_CLIENT_ID: $(client_id)
