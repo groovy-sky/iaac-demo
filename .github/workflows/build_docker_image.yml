@@ -4,7 +4,7 @@ name: Build Docker Image
 on:
   push:
     paths:
-    - '.github/**'
+    - '.github/workflows/**'
     - 'ansible/**'
     - 'azure/**'
     - 'docker/**'

@@ -19,7 +19,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed
     steps:
 
-    - bash: ansible-playbook /opt/automation/ansible/main.yml -e "azure_group_name='demo-group' nginx_default_msg=$(nginx_default_msg)"
+    - bash: ansible-playbook /opt/automation/ansible/main.yml -e "azure_group_name=$(group_name) nginx_default_msg=$(nginx_default_msg)"
       displayName: 'Run main.yml Playbook'
       env:
         ANSIBLE_HOST_KEY_CHECKING: False
